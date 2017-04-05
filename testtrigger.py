@@ -28,7 +28,7 @@ def on_message(client, userdata, msg):
     elif("who?" in msg.payload):
 
         pub.Publish('QUBE-PERFTEST-TRIGGER',
-                    message="OUT: Node {0} is up and running ".format(socket.gethostname()))
+                    message="OUT: Node {0} is up and running!".format(socket.gethostname()))
 
 
 
