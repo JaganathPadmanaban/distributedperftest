@@ -29,7 +29,10 @@ def on_message(client, userdata, msg):
 
         pub.Publish('QUBE-PERFTEST-TRIGGER',
                     message="OUT: Node {0} is up and running!!".format(socket.gethostname()))
-
+    elif("bash>" in msg.payload):
+        command= msg.payload.split("bash>")[1]
+        returncode = subprocess.call(command)
+        pub.Publish('QUBE-PERFTEST-TRIGGER',"OUT: {0}".format(returncode))
 
 
 
