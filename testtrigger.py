@@ -30,12 +30,12 @@ def on_message(client, userdata, msg):
         pub.Publish('QUBE-PERFTEST-TRIGGER',
                     message="OUT: Node {0} is up and running!!".format(socket.gethostname()))
     elif("load>" in msg.payload):
-        pub.Publish('QUBE-PERFTEST-TRIGGER', 'Load started by node{0}'.format(socket.gethostbyname()))
+        pub.Publish('QUBE-PERFTEST-TRIGGER', 'Load started by node{0}'.format(socket.gethostname()))
         arg= msg.payload.split(">")[1]
         cargo=arg.split("|")
         if(len(cargo)==3):
             Steamroller.sendload(int(cargo[0]), int(cargo[1]), cargo[2])
-        pub.Publish('QUBE-PERFTEST-TRIGGER','Load completed by node{0}'.format(socket.gethostbyname()))
+        pub.Publish('QUBE-PERFTEST-TRIGGER','Load completed by node{0}'.format(socket.gethostname()))
 
 
 
