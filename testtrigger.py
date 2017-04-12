@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import subprocess
 import Mosquitopublisher as pub
 import socket
-
+import Steamroller
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -17,7 +17,7 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     if("OUT" in msg.payload):
         pass
-    elif("start test" in msg.payload):
+    elif("start test" in msg.payload): #Handling start test
         project= msg.payload.split('>')[1]
         pub.Publish(topic='QUBE-PERFTEST-TRIGGER', message="OUT: starting test run from node: {0}".format(socket.gethostname()))
         print("starting process node!")
@@ -29,10 +29,15 @@ def on_message(client, userdata, msg):
 
         pub.Publish('QUBE-PERFTEST-TRIGGER',
                     message="OUT: Node {0} is up and running!!".format(socket.gethostname()))
-    elif("bash>" in msg.payload):
-        command= msg.payload.split("bash>")[1]
-        returncode = subprocess.call(command)
-        pub.Publish('QUBE-PERFTEST-TRIGGER',"OUT: {0}".format(returncode))
+    elif("load>" in msg.payload):
+        pub.Publish('QUBE-PERFTEST-TRIGGER', 'Load started by node{0}'.format(socket.gethostbyname()))
+        arg= msg.payload.split(">")[1]
+        cargo=arg.split("|")
+        if(len(cargo)==3):
+            Steamroller.sendload(int(cargo[0]), int(cargo[1]), cargo[2])
+        pub.Publish('QUBE-PERFTEST-TRIGGER','Load completed by node{0}'.format(socket.gethostbyname()))
+
+
 
 
 
