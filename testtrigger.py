@@ -3,7 +3,6 @@ import subprocess
 import Mosquitopublisher as pub
 import socket
 import Steamroller
-
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -36,6 +35,7 @@ def on_message(client, userdata, msg):
         if(len(cargo)==3):
             Steamroller.sendload(int(cargo[0]), int(cargo[1]), cargo[2])
         pub.Publish('QUBE-PERFTEST-TRIGGER','Load completed by node{0}'.format(socket.gethostname()))
+
 
 
 

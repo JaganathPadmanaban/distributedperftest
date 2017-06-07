@@ -29,6 +29,8 @@ def on_message(client, userdata, msg):
         for i in range(0,len(nodes)):
             yy=subprocess.check_output(["heroku", "scale", "--app", str(nodes[i]), "worker=0"])
         pub.Publish(topic='QUBE-PERFTEST-TRIGGER', message='OUT: Dynos stopped successfully!!')
+    elif ("who?" in msg.payload):
+        pub.Publish(topic='QUBE-PERFTEST-TRIGGER',message='OUT: I the DynoManger is online!!')
 
 
 

@@ -27,5 +27,6 @@ def sendload(threadds,ranges,urls):
 
     for thread in threads:
         thread.join()
+        
 
-#sendload(20,10,"https://jt-purchases.herokuapp.com/availability?session_id=03ff1ae5-2884-4dba-8680-0934c9bf4e62&channel=JUSTICKETS-WEB")
+#sendload(20,10,"https://jt-purchases.herokuapp.com/availability?session_id=95933626-5ace-48ed-b17a-dd09f5bf90bd&channel=JUSTICKETS-WEB")
