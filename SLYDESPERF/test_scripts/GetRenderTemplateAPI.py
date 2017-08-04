@@ -14,7 +14,7 @@ class Transaction(object):
         start_timer = time.time()
         response = requests.get(url="https://staging.slydes.qubecinema.com/sly-init/render?template_id=cb3b306f-399f-4e73-b490-b47b330b215e&message=Happy birthday")
         latency = time.time() - start_timer
-        self.custom_timers["Time_Taken_For_Get_Render_Template"] = latency
+        self.custom_timers["Time_Taken_For_Booking_Slydes"] = latency
         #print str(response.status_code) + '--->' + response.content
         assert(response.status_code == 200)
         if(response.status_code!=200):
