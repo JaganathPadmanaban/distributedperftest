@@ -22,7 +22,7 @@ class Transaction(object):
     }\
 }')
         latency = time.time() - start_timer
-        self.custom_timers["Time_Taken_For_Booking_Slydes"] = latency
+        self.custom_timers["Time_Taken_For_Create_Order_API"] = latency
         #print str(response.status_code) + '--->' + response.content
         assert(response.status_code == 200)
         if(response.status_code!=200):
