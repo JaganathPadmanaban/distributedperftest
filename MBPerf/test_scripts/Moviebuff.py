@@ -11,7 +11,7 @@ class Transaction(object):
 
     def run(self):
         start_timer = time.time()
-        response = requests.get(url="https://www.moviebuff.com/arjun-reddy.json")
+        response = requests.get(url="https://test.moviebuff.com/mersal.json")
         latency = time.time() - start_timer
         self.custom_timers["Time_Taken_For_Getting_Token_Info"] = latency
         #print str(response.status_code) + '--->' + response.content
