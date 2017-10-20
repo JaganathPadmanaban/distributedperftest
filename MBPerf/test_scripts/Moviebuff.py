@@ -13,7 +13,7 @@ class Transaction(object):
         start_timer = time.time()
         response = requests.get(url="https://test.moviebuff.com/mersal.json")
         latency = time.time() - start_timer
-        self.custom_timers["Time_Taken_For_Getting_Token_Info"] = latency
+        self.custom_timers["Time_Taken_For_loading_movie_json"] = latency
         #print str(response.status_code) + '--->' + response.content
         assert(response.status_code == 200)
         if(response.status_code!=200):
